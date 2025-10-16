@@ -68,5 +68,9 @@
         background-color: #a6dcfc;
 
     }
+    button{
+        color: #0400ff;
+
+    }
     
     input[type=number] {text-align: right;}
