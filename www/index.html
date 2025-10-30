@@ -175,11 +175,11 @@
     function alarm(){
         var canvas=$("#mycanvas")[0];
         var ctx=canvas.getContext("2d");
-        var img=new Image();
-        img.src="ksuisbg.gif";
-        img.onload=function(){
-            ctx.drawImage(img,0,0,300,300);
-        };
+         var img=new Image();
+         img.src="ksuisbg.gif";
+         img.onload=function(){
+             ctx.drawImage(img,0,0,300,300);
+         };
         var audio=new Audio();
         audio.src="pin.wav";
         audio.play();
@@ -225,6 +225,11 @@
             $("#time").html("経過時間："+mtime+"分"+stime+"秒");
             $("#remain").html("残り時間："+mrest+"分"+srest+"秒");
             analog(rest);
+            if(etime>60){
+                var audio=new Audio();
+                audio.src="pin.wav";
+                audio.play();
+            }
             if(rest<=0){
                 active=false;
                 alarm();
