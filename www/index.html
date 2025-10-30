@@ -157,7 +157,10 @@
     var etime=0;
     var mtime=0;
     var stime=0;
-
+    var srest=0;
+    var mrest=0;
+    var speriod=0;
+    var mperiod=0;
 
     
     // ボタンの初期設定
@@ -203,8 +206,10 @@
         alarm();
         active=false;
         period=60*parseInt($("#minute").val())+parseInt($("#second").val());
+        speriod=period%60;
+        mperiod=Math.floor(period / 60) % 60;
         $("#time").html("経過時間：0分0秒");
-        $("#remain").html("残り時間："+period);
+        $("#remain").html("残り時間："+mperiod+"分"+speriod+"秒");
     }
     
  
@@ -215,8 +220,10 @@
             stime=etime%60;
             mtime=Math.floor(etime / 60) % 60;
             rest=period-etime;
+            srest=rest%60;
+            mrest=Math.floor(rest / 60) % 60;
             $("#time").html("経過時間："+mtime+"分"+stime+"秒");
-            $("#remain").html("残り時間："+rest);
+            $("#remain").html("残り時間："+mrest+"分"+srest+"秒");
             analog(rest);
             if(rest<=0){
                 active=false;
